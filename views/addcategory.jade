@@ -1,0 +1,17 @@
+extends layout
+
+block content
+    form(method='post',action='/categories/add')
+        if errors
+            each error, i in errors
+                div.alert.alert-danger #{error.msg}
+        | Name:
+        br
+        input(type='text', name='name') 
+        br
+        input(type='submit', value='Submit')
+        br
+        
+        script
+            | CKEDITOR.replace('body')
+

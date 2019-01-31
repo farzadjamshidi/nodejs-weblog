@@ -1,0 +1,29 @@
+extends layout
+
+block content
+    form(method='post',action='/posts/add',enctype='multipart/form-data')
+        | Title:
+        br
+        input(type='text', name='title')
+        br
+        |   Category
+        select(name='category')
+            each category,i in categories
+                option(value='#{category.name}') #{category.name}
+
+        br
+        textarea(name='body')
+        br
+        input(type='file', name='mainimage')
+        br
+        |   Author
+        select
+            option(value='me') me
+            option(value='you') you
+        br
+        input(type='submit', value='Submit')
+        br
+        
+        script
+            | CKEDITOR.replace('body')
+
